@@ -1,0 +1,14 @@
+React.createClass({
+  render:function(){
+    return (
+      <div rendered="x" data-rendered="x">
+       <a href="#" onClick={this.update}>
+         {/* this is a comment */}
+         this is the text
+        {i>1 ? 'More than one' : 'one'}
+        {i>1 && 'More than one'}
+      </a> 
+     </div>
+    )
+  }
+})

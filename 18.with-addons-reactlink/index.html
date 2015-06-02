@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>reactlink</title>
+	<script src="http://fb.me/react-with-addons-0.12.2.js"></script> 
+	<script src="http://fb.me/JSXTransformer-0.12.2.js"></script>
+</head>
+<body>
+	<div id='app' />
+</body>
+<script type="text/jsx">
+// var APP = React.createClass({
+// 	getInitialState: function() {
+// 		return {
+// 			name: '',
+// 			email: ''
+// 		};
+// 	},
+// 	update:function(){
+// 		this.setState({
+// 			name:this.refs.name.getDOMNode().value,
+// 			email:this.refs.email.getDOMNode().value
+// 		})
+// 	},
+// 	render: function() {
+// 		return (
+// 			<form>
+// 				<div>
+// 					<input ref="name" onChange={this.update} type="text" placeholder="Name" />
+// 					<label>*{this.state.name}*</label>
+// 				</div>
+// 				<div>
+// 					<input ref="email" onChange={this.update} type="text" placeholder="Email" />
+// 					<label>*{this.state.email}*</label>
+// 				</div>
+// 			</form>
+// 		);
+// 	}
+// });
+
+// React.renderComponent(<APP />, document.getElementById('app'));
+
+var APP = React.createClass({
+	mixins:[React.addons.LinkedStateMixin],
+	getInitialState: function() {
+		return {
+			name: '',
+			email: ''
+		};
+	},
+	render: function() {
+		return (
+			<form>
+				<div>
+					<input valueLink={this.linkState('name')}placeholder="Name" />
+					<label>*{this.state.name}*</label>
+				</div>
+				<div>
+					<input valueLink={this.linkState('email')} placeholder="Email" />
+					<label>*{this.state.email}*</label>
+				</div>
+				<div>
+					<input valueLink={this.linkState('phone')} placeholder="Phone" />
+					<label>*{this.state.phone}*</label>
+				</div>				
+			</form>
+		);
+	}
+});
+
+React.renderComponent(<APP />, document.getElementById('app'));
+</script>
+</html>
